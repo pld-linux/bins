@@ -6,7 +6,7 @@ Summary:	HTML photo album generator
 Summary(pl):	Generator albumów fotograficznych w HTML
 Name:		bins
 Version:	1.1.21
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://jsautret.free.fr/BINS/%{name}-%{version}.tar.bz2
@@ -54,6 +54,7 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1} \
 	   $RPM_BUILD_ROOT%{_datadir}/locale/{fr,de,pl}/LC_MESSAGES
 
 install bins bins_edit $RPM_BUILD_ROOT%{_bindir}
+install bins_cleanupgallery  $RPM_BUILD_ROOT%{_bindir}
 install bins-edit-gui $RPM_BUILD_ROOT%{_bindir}
 install binsrc $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
 install templates/*.html $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/templates.default
@@ -81,6 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc CREDITS ChangeLog README TODO doc/*.html
 %attr(755,root,root) %{_bindir}/bins
 %attr(755,root,root) %{_bindir}/bins_edit
+%attr(755,root,root) %{_bindir}/bins_cleanupgallery
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/%{name}/binsrc
 %dir %{_sysconfdir}/%{name}/templates.default
