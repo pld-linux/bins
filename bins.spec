@@ -3,7 +3,7 @@
 #
 %include	/usr/lib/rpm/macros.perl
 Summary:	HTML photo album generator
-Summary(pl):	Generator albumów fotograficznych w HTML
+Summary(pl):	Generator albumów fotograficznych w HTML-u
 Name:		bins
 Version:	1.1.24
 Release:	1
