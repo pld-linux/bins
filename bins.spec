@@ -6,7 +6,7 @@ Summary:	HTML photo album generator
 Summary(pl):	Generator albumów fotograficznych w HTML-u
 Name:		bins
 Version:	1.1.26
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://jsautret.free.fr/BINS/%{name}-%{version}.tar.bz2
@@ -32,7 +32,7 @@ stron HTML.
 Summary:	Editor GUI for BINS
 Summary(pl):	Interfejs u¿ytkownika do edycji albumów BINS
 Group:		Applications/Graphics
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description edit-gui
 GUI for editing BINS albums.
@@ -113,5 +113,5 @@ rm -rf $RPM_BUILD_ROOT
 # -f %{name}-edit-gui.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/bins-edit-gui
+%{_datadir}/%{name}/bins-edit-gui.glade
 %{_mandir}/man1/bins-edit-gui.1*
-%{_datadir}/%{name}
