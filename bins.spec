@@ -86,7 +86,7 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/%{name}/templates.default/*
 %{_mandir}/man1/*
 
-%files -f %{name}-edit-gui.lang edit-gui
+%files edit-gui -f %{name}-edit-gui.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_xbindir}/bins-edit-gui
 %{_xmandir}/man1/*
