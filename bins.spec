@@ -2,7 +2,7 @@
 Summary:	HTML photo album generator
 Summary(pl):	Generator albumów fotograficznych w HTML
 Name:		bins
-Version:	1.1.16
+Version:	1.1.17
 Release:	1
 License:	GPL
 Group:		Applications/Graphics
