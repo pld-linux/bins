@@ -89,7 +89,8 @@ done
 cd -
 
 %find_lang %{name}
-%find_lang %{name}-edit-gui
+# The only file here is empty...
+#%%find_lang %{name}-edit-gui
 
 %clean
 rm -rf $RPM_BUILD_ROOT
