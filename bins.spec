@@ -65,8 +65,8 @@ cd -
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/%{name} \
-	   $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1} \
-	   $RPM_BUILD_ROOT%{_datadir}/%{name}
+	$RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1} \
+	$RPM_BUILD_ROOT%{_datadir}/%{name}
 
 install anti_bins bins bins_edit $RPM_BUILD_ROOT%{_bindir}
 install bins_cleanupgallery $RPM_BUILD_ROOT%{_bindir}
