@@ -1,0 +1,21 @@
+diff -durN bins-1.1.7.orig/bins-edit-gui bins-1.1.7/bins-edit-gui
+--- bins-1.1.7.orig/bins-edit-gui	Fri May 24 11:41:24 2002
++++ bins-1.1.7/bins-edit-gui	Fri May 24 11:41:51 2002
+@@ -52,7 +52,7 @@
+ use Text::Iconv;
+ 
+ # for localized text
+-use POSIX qw(setlocale LC_MESSAGES);
++use POSIX qw(setlocale LC_ALL);
+ use Locale::gettext;
+ 
+ sub _ {
+@@ -63,7 +63,7 @@
+ 
+ $localePath = "/usr/share/locale"; # Base locale path  (for I18N)
+ 
+-setlocale(LC_MESSAGES, "");
++setlocale(LC_ALL, "");
+ bindtextdomain("bins-edit-gui", $localePath);
+ textdomain("bins-edit-gui");
+ 
