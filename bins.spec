@@ -10,6 +10,7 @@ Release:	2
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://jsautret.free.fr/BINS/%{name}-%{version}.tar.bz2
+# Source0-md5:	a63dc5db4ec60b730066eefdea9b1748
 Patch0:		%{name}-localedir.patch
 Patch1:		%{name}-gladedir.patch
 URL:		http://bins.sautret.org/
