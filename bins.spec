@@ -6,7 +6,7 @@ Summary:	HTML photo album generator
 Summary(pl):	Generator albumów fotograficznych w HTML
 Name:		bins
 Version:	1.1.21
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://jsautret.free.fr/BINS/%{name}-%{version}.tar.bz2
@@ -49,12 +49,16 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1} \
 	   $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1} \
 	   $RPM_BUILD_ROOT%{_datadir}/%{name} \
 	   $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/templates.default \
+	   $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/templates.joi \
+	   $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/templates.joi/static \
 	   $RPM_BUILD_ROOT%{_datadir}/locale/{fr,de,pl}/LC_MESSAGES
 
 install bins bins_edit $RPM_BUILD_ROOT%{_bindir}
 install bins-edit-gui $RPM_BUILD_ROOT%{_bindir}
 install binsrc $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
 install templates/*.html $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/templates.default
+install templates.joi/*.html $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/templates.joi
+install templates.joi/static/* $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/templates.joi/static
 install bins-edit-gui.glade $RPM_BUILD_ROOT%{_datadir}/%{name}
 install doc/{bins,bins_edit}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 install doc/*gui*.1 $RPM_BUILD_ROOT%{_mandir}/man1
@@ -81,6 +85,8 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/%{name}/binsrc
 %dir %{_sysconfdir}/%{name}/templates.default
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/%{name}/templates.default/*
+%dir %{_sysconfdir}/%{name}/templates.joi
+%config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/%{name}/templates.joi/*
 %{_mandir}/man1/bins.1*
 %{_mandir}/man1/bins_edit.1*
 
