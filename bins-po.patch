@@ -1,0 +1,24 @@
+diff -u bins-1.1.26/intl.orig/fr.po bins-1.1.26/intl/fr.po
+--- bins-1.1.26/intl.orig/fr.po	Mon May 24 15:31:09 2004
++++ bins-1.1.26/intl/fr.po	Tue Aug  3 22:59:59 2004
+@@ -13,7 +13,7 @@
+ "Language-Team: Fr\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=iso-8859-1\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Transfer-Encoding: 8bit\n"
+ 
+ #: ../bins:387
+ msgid "Sm"
+diff -u bins-1.1.26/intl.orig/nl.po bins-1.1.26/intl/nl.po
+--- bins-1.1.26/intl.orig/nl.po	Mon May 24 15:31:09 2004
++++ bins-1.1.26/intl/nl.po	Tue Aug  3 23:02:29 2004
+@@ -12,7 +12,7 @@
+ "Last-Translator: Eelco Maljaars <e.maljaars@scouting.nl>\n"
+ "Language-Team: nl \n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=CHARSET\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
+ "Content-Transfer-Encoding: 8bit\n"
+ 
+ #: ../bins:387
