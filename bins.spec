@@ -47,7 +47,7 @@ Interfejs u¿ytkownika do edycji albumów BINS.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1} \
 	   $RPM_BUILD_ROOT{%{_xbindir},%{_xmandir}/man1} \
-	   $RPM_BUILD_ROOT%{_datadir}/%{name}} \
+	   $RPM_BUILD_ROOT%{_datadir}/%{name} \
 	   $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/templates.default \
 	   $RPM_BUILD_ROOT%{_localedir}/{fr,de,pl}/LC_MESSAGES
 
