@@ -6,7 +6,7 @@ diff -durN bins-1.1.7.orig/bins-edit-gui bins-1.1.7/bins-edit-gui
  Gtk->init;
  
 -$glade = "/usr/local/share/bins/bins-edit-gui.glade";
-+$glade = "/usr/X11R6/share/bins/bins-edit-gui.glade";
++$glade = "/usr/share/bins/bins-edit-gui.glade";
  if (! -r $glade) {
      $glade = "bins-edit-gui.glade" ; # developer hack
      print "DEVELOPER HACK\n";
