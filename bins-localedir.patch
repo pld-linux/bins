@@ -6,7 +6,7 @@ diff -durN bins-1.1.7.orig/bins bins-1.1.7/bins
  
  # I18N
 -my $localePath = "/usr/local/share/locale"; # Base locale path  (for I18N)
-+my $localePath = "/usr/share/locale"; # Base locale path  (for I18N)
++my $localePath = "/usr/X11R6/share/locale"; # Base locale path  (for I18N)
  
  my $I18N = have_package("Locale::gettext");
  if ($I18N) {
@@ -18,7 +18,7 @@ diff -durN bins-1.1.7.orig/bins-edit-gui bins-1.1.7/bins-edit-gui
  $debug=0;
  
 -$localePath = "/usr/local/share/locale"; # Base locale path  (for I18N)
-+$localePath = "/usr/share/locale"; # Base locale path  (for I18N)
++$localePath = "/usr/X11R6/share/locale"; # Base locale path  (for I18N)
  
  setlocale(LC_MESSAGES, "");
  bindtextdomain("bins-edit-gui", $localePath);
