@@ -6,21 +6,17 @@ Summary:	HTML photo album generator
 Summary(pl):	Generator albumów fotograficznych w HTML
 Name:		bins
 Version:	1.1.21
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://jsautret.free.fr/BINS/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-localedir.patch
 Patch1:		%{name}-gladedir.patch
 URL:		http://bins.sautret.org/
+BuildRequires:	rpm-perlprov >= 3.0.3-18
 Requires:	ImageMagick
 BuildArch:	noarch
-BuildRequires:	rpm-perlprov >= 3.0.3-18
-%requires_eq	perl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
 
 %description
 The aim of BINS is to generate static HTML photo albums.
@@ -78,15 +74,17 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc CREDITS ChangeLog README TODO doc/*.html
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/bins
+%attr(755,root,root) %{_bindir}/bins_edit
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/%{name}/binsrc
 %dir %{_sysconfdir}/%{name}/templates.default
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/%{name}/templates.default/*
-%{_mandir}/man1/*
+%{_mandir}/man1/bins.1*
+%{_mandir}/man1/bins_edit.1*
 
 %files edit-gui -f %{name}-edit-gui.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/bins-edit-gui
-%{_mandir}/man1/*
+%{_mandir}/man1/bins-edit-gui.1*
 %{_datadir}/%{name}
