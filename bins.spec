@@ -14,6 +14,7 @@ Source0:	http://jsautret.free.fr/BINS/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-localedir.patch
 Patch1:		%{name}-gladedir.patch
 Patch2:		%{name}-datadir.patch
+Patch3:		%{name}-po.patch
 URL:		http://bins.sautret.org/
 BuildRequires:	rpm-perlprov >= 3.0.3-18
 Requires:	ImageMagick
@@ -44,6 +45,22 @@ Graficzny interfejs u¿ytkownika do edycji albumów BINS.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+
+# outdated
+rm -f intl/zh_TW.Big5.po
+rm -f intl/*.mo
+# current
+mv -f intl/zh{,_TW}.po
+mv -f intl/messages.po{,t}
+mv -f intl/bins-edit-gui.po{,t}
+
+%build
+cd intl
+for L in *.po ; do
+	msgfmt -o `basename $L .po`.mo $L
+done
+cd -
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -60,14 +77,16 @@ install bins-edit-gui.glade $RPM_BUILD_ROOT%{_datadir}/%{name}
 install doc/{bins,bins_edit}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 install doc/*gui*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
-for L in intl/??.mo ; do
+cd intl
+for L in ??.mo ??_??.mo ; do
 	LL=`basename $L .mo`
 	install -d $RPM_BUILD_ROOT%{_datadir}/locale/$LL/LC_MESSAGES
-	install intl/$LL.mo $RPM_BUILD_ROOT%{_datadir}/locale/$LL/LC_MESSAGES/%{name}.mo
-	if [ -f intl/gui-$LL.mo ] ; then
-		install intl/gui-$LL.mo $RPM_BUILD_ROOT%{_datadir}/locale/$LL/LC_MESSAGES/%{name}-edit-gui.mo
+	install $LL.mo $RPM_BUILD_ROOT%{_datadir}/locale/$LL/LC_MESSAGES/%{name}.mo
+	if [ -f gui-$LL.mo ] ; then
+		install gui-$LL.mo $RPM_BUILD_ROOT%{_datadir}/locale/$LL/LC_MESSAGES/%{name}-edit-gui.mo
 	fi
 done
+cd -
 
 %find_lang %{name}
 %find_lang %{name}-edit-gui
