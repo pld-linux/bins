@@ -16,6 +16,7 @@ Patch1:		%{name}-gladedir.patch
 Patch2:		%{name}-datadir.patch
 Patch3:		%{name}-po.patch
 URL:		http://bins.sautret.org/
+BuildRequires:	gettext-devel
 BuildRequires:	rpm-perlprov >= 3.0.3-18
 Requires:	ImageMagick
 BuildArch:	noarch
