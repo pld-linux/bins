@@ -8,6 +8,8 @@ License:	GPL
 Group:		Applications/Graphics
 Source0:	http://jsautret.free.fr/BINS/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-localedir.patch
+Patch1:		%{name}-gladedir.patch
+Patch2:		%{name}-gui_locale.patch
 URL:		http://bins.sautret.org/
 Buildarch:	noarch
 BuildRequires:	rpm-perlprov >= 3.0.3-18
@@ -16,6 +18,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define _xbindir %{_prefix}/X11R6/bin/
 %define _xmandir %{_prefix}/X11R6/man/
+%define _xdatadir %{_prefix}/X11R6/share/
 %define _localedir %{_datadir}/locale/
 
 %description
@@ -40,6 +43,8 @@ Interfejs u¿ytkownika do edycji albumów BINS.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 
@@ -47,7 +52,7 @@ Interfejs u¿ytkownika do edycji albumów BINS.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1} \
 	   $RPM_BUILD_ROOT{%{_xbindir},%{_xmandir}/man1} \
-	   $RPM_BUILD_ROOT%{_datadir}/%{name} \
+	   $RPM_BUILD_ROOT%{_xdatadir}/%{name} \
 	   $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/templates.default \
 	   $RPM_BUILD_ROOT%{_localedir}/{fr,de,pl}/LC_MESSAGES
 
@@ -55,7 +60,7 @@ install bins bins_edit $RPM_BUILD_ROOT%{_bindir}
 install bins-edit-gui $RPM_BUILD_ROOT%{_xbindir}
 install binsrc $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
 install templates/*.html $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/templates.default
-install bins-edit-gui.glade $RPM_BUILD_ROOT%{_datadir}/%{name}
+install bins-edit-gui.glade $RPM_BUILD_ROOT%{_xdatadir}/%{name}
 install doc/{bins,bins_edit}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 install doc/*gui*.1 $RPM_BUILD_ROOT%{_xmandir}/man1
 
@@ -76,7 +81,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc CREDITS ChangeLog README TODO doc/*.html
 %attr(755,root,root) %{_bindir}/*
-%{_datadir}/%{name}
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/%{name}/binsrc
 %dir %{_sysconfdir}/%{name}/templates.default
@@ -87,3 +91,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_xbindir}/bins-edit-gui
 %{_xmandir}/man1/*
+%{_xdatadir}/%{name}
