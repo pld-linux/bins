@@ -25,7 +25,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 The aim of BINS is to generate static HTML photo albums.
 
 %description -l pl
-BINS s³u¿y do generowania albumów fotograficznych w postaci statyczych
+BINS s³u¿y do generowania albumów fotograficznych w postaci statycznych
 stron HTML.
 
 %package edit-gui
