@@ -22,7 +22,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 The aim of BINS is to generate static HTML photo albums.
 
 %description -l pl
-BINS s³u¿y do generowania albumów photo w postaci statyczych stron HTML.
+BINS s³u¿y do generowania albumów photo w postaci statyczych stron
+HTML.
 
 %package edit-gui
 Summary:	Editor GUI for BINS
@@ -33,7 +34,7 @@ Requires:	%{name} = %{version}
 %description edit-gui
 GUI for editing BINS albums.
 
-%description -l pl edit-gui
+%description edit-gui -l pl
 Interfejs u¿ytkownika do edycji albumów BINS.
 
 %prep
@@ -48,7 +49,7 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1} \
 	   $RPM_BUILD_ROOT{%{_xbindir},%{_xmandir}/man1} \
 	   $RPM_BUILD_ROOT%{_datadir}/%{name}} \
 	   $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/templates.default \
-	   $RPM_BUILD_ROOT%{_localedir}/{fr,de,pl}/LC_MESSAGES 
+	   $RPM_BUILD_ROOT%{_localedir}/{fr,de,pl}/LC_MESSAGES
 
 install bins bins_edit $RPM_BUILD_ROOT%{_bindir}
 install bins-edit-gui $RPM_BUILD_ROOT%{_xbindir}
@@ -60,7 +61,7 @@ install doc/*gui*.1 $RPM_BUILD_ROOT%{_xmandir}/man1
 
 for L in fr de pl ; do
 	install intl/$L.mo $RPM_BUILD_ROOT%{_localedir}/$L/LC_MESSAGES/%{name}.mo
-	if [ -f intl/gui-$L.mo ] ; then 
+	if [ -f intl/gui-$L.mo ] ; then
 		install intl/gui-$L.mo $RPM_BUILD_ROOT%{_localedir}/$L/LC_MESSAGES/%{name}-edit-gui.mo
 	fi
 done
@@ -74,7 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc CREDITS ChangeLog README TODO doc/*.html
-%attr(755,root,root) %{_bindir}/* 
+%attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/%{name}/binsrc
