@@ -5,14 +5,15 @@
 Summary:	HTML photo album generator
 Summary(pl):	Generator albumów fotograficznych w HTML-u
 Name:		bins
-Version:	1.1.24
+Version:	1.1.26
 Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://jsautret.free.fr/BINS/%{name}-%{version}.tar.bz2
-# Source0-md5:	ade7641c266387fd30aa97de67ef4b4f
+# Source0-md5:	b260838a854557781e23b43e64c06f6b
 Patch0:		%{name}-localedir.patch
 Patch1:		%{name}-gladedir.patch
+Patch2:		%{name}-datadir.patch
 URL:		http://bins.sautret.org/
 BuildRequires:	rpm-perlprov >= 3.0.3-18
 Requires:	ImageMagick
@@ -42,32 +43,29 @@ Graficzny interfejs u¿ytkownika do edycji albumów BINS.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1} \
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/%{name} \
 	   $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1} \
-	   $RPM_BUILD_ROOT%{_datadir}/%{name} \
-	   $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/templates.default \
-	   $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/templates.joi \
-	   $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/templates.joi/static \
-	   $RPM_BUILD_ROOT%{_datadir}/locale/{fr,de,pl}/LC_MESSAGES
+	   $RPM_BUILD_ROOT%{_datadir}/%{name}
 
-install bins bins_edit $RPM_BUILD_ROOT%{_bindir}
+install anti_bins bins bins_edit $RPM_BUILD_ROOT%{_bindir}
 install bins_cleanupgallery $RPM_BUILD_ROOT%{_bindir}
 install bins-edit-gui $RPM_BUILD_ROOT%{_bindir}
 install binsrc $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
-install templates/*.html $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/templates.default
-install templates.joi/*.html $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/templates.joi
-install templates.joi/static/* $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/templates.joi/static
+cp -r templates* $RPM_BUILD_ROOT%{_datadir}/%{name}
 install bins-edit-gui.glade $RPM_BUILD_ROOT%{_datadir}/%{name}
 install doc/{bins,bins_edit}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 install doc/*gui*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
-for L in fr de pl ; do
-	install intl/$L.mo $RPM_BUILD_ROOT%{_datadir}/locale/$L/LC_MESSAGES/%{name}.mo
-	if [ -f intl/gui-$L.mo ] ; then
-		install intl/gui-$L.mo $RPM_BUILD_ROOT%{_datadir}/locale/$L/LC_MESSAGES/%{name}-edit-gui.mo
+for L in intl/??.mo ; do
+	LL=`basename $L .mo`
+	install -d $RPM_BUILD_ROOT%{_datadir}/locale/$LL/LC_MESSAGES
+	install intl/$LL.mo $RPM_BUILD_ROOT%{_datadir}/locale/$LL/LC_MESSAGES/%{name}.mo
+	if [ -f intl/gui-$LL.mo ] ; then
+		install intl/gui-$LL.mo $RPM_BUILD_ROOT%{_datadir}/locale/$LL/LC_MESSAGES/%{name}-edit-gui.mo
 	fi
 done
 
@@ -83,12 +81,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/bins
 %attr(755,root,root) %{_bindir}/bins_edit
 %attr(755,root,root) %{_bindir}/bins_cleanupgallery
+%attr(755,root,root) %{_bindir}/anti_bins
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/%{name}/binsrc
-%dir %{_sysconfdir}/%{name}/templates.default
-%config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/%{name}/templates.default/*
-%dir %{_sysconfdir}/%{name}/templates.joi
-%config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/%{name}/templates.joi/*
+%dir %{_datadir}/%{name}
+%config(noreplace) %verify(not md5 size mtime) %{_datadir}/%{name}/templates*
 %{_mandir}/man1/bins.1*
 %{_mandir}/man1/bins_edit.1*
 
