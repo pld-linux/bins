@@ -3,7 +3,7 @@ Summary:	HTML photo album generator
 Summary(pl):	Generator albumów fotograficznych w HTML
 Name:		bins
 Version:	1.1.14
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://jsautret.free.fr/BINS/%{name}-%{version}.tar.bz2
@@ -13,7 +13,6 @@ URL:		http://bins.sautret.org/
 BuildArch:	noarch
 BuildRequires:	rpm-perlprov >= 3.0.3-18
 %requires_eq	perl
-Requires:	perl-HTML-Clean
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define	_xprefix	/usr/X11R6
