@@ -109,8 +109,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/bins.1*
 %{_mandir}/man1/bins_edit.1*
 
+#%files edit-gui -f %{name}-edit-gui.lang
 %files edit-gui
-# -f %{name}-edit-gui.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/bins-edit-gui
 %{_datadir}/%{name}/bins-edit-gui.glade
