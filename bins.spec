@@ -1,6 +1,6 @@
 %include	/usr/lib/rpm/macros.perl
 Summary:	HTML photo album generator
-Summary(pl):	Generator albumów foto
+Summary(pl):	Generator albumów fotograficznych w HTML
 Name:		bins
 Version:	1.1.7
 Release:	1
@@ -11,26 +11,27 @@ Patch0:		%{name}-localedir.patch
 Patch1:		%{name}-gladedir.patch
 Patch2:		%{name}-gui_locale.patch
 URL:		http://bins.sautret.org/
-Buildarch:	noarch
+BuildArch:	noarch
 BuildRequires:	rpm-perlprov >= 3.0.3-18
 %requires_eq	perl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define _xbindir %{_prefix}/X11R6/bin/
-%define _xmandir %{_prefix}/X11R6/man/
-%define _xdatadir %{_prefix}/X11R6/share/
-%define _localedir %{_datadir}/locale/
+%define	_xprefix	/usr/X11R6
+%define _xbindir	%{_xprefix}/bin
+%define _xmandir	%{_xprefix}/man
+%define _xdatadir	%{_xprefix}/share
+%define _localedir	%{_datadir}/locale
 
 %description
 The aim of BINS is to generate static HTML photo albums.
 
 %description -l pl
-BINS s³u¿y do generowania albumów photo w postaci statyczych stron
-HTML.
+BINS s³u¿y do generowania albumów fotograficznych w postaci statyczych
+stron HTML.
 
 %package edit-gui
 Summary:	Editor GUI for BINS
-Summary(pl):	Interfejs u¿ytkownika do edycji albumów bins
+Summary(pl):	Interfejs u¿ytkownika do edycji albumów BINS
 Group:		Applications/Graphics
 Requires:	%{name} = %{version}
 
@@ -38,15 +39,13 @@ Requires:	%{name} = %{version}
 GUI for editing BINS albums.
 
 %description edit-gui -l pl
-Interfejs u¿ytkownika do edycji albumów BINS.
+Graficzny interfejs u¿ytkownika do edycji albumów BINS.
 
 %prep
 %setup -q
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-
-%build
 
 %install
 rm -rf $RPM_BUILD_ROOT
