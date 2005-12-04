@@ -26,8 +26,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 The aim of BINS is to generate static HTML photo albums.
 
 %description -l pl
-BINS s³u¿y do generowania albumów fotograficznych w postaci statycznych
-stron HTML.
+BINS s³u¿y do generowania albumów fotograficznych w postaci
+statycznych stron HTML.
 
 %package edit-gui
 Summary:	Editor GUI for BINS
@@ -104,9 +104,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/bins_cleanupgallery
 %attr(755,root,root) %{_bindir}/anti_bins
 %dir %{_sysconfdir}/%{name}
-%config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/%{name}/binsrc
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/binsrc
 %dir %{_datadir}/%{name}
-%config(noreplace) %verify(not md5 size mtime) %{_datadir}/%{name}/templates*
+%config(noreplace) %verify(not md5 mtime size) %{_datadir}/%{name}/templates*
 %{_mandir}/man1/bins.1*
 %{_mandir}/man1/bins_edit.1*
 
