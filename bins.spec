@@ -3,7 +3,7 @@
 #
 %include	/usr/lib/rpm/macros.perl
 Summary:	HTML photo album generator
-Summary(pl.UTF-8):   Generator albumów fotograficznych w HTML-u
+Summary(pl.UTF-8):	Generator albumów fotograficznych w HTML-u
 Name:		bins
 Version:	1.1.27
 Release:	1
@@ -31,7 +31,7 @@ statycznych stron HTML.
 
 %package edit-gui
 Summary:	Editor GUI for BINS
-Summary(pl.UTF-8):   Interfejs użytkownika do edycji albumów BINS
+Summary(pl.UTF-8):	Interfejs użytkownika do edycji albumów BINS
 Group:		Applications/Graphics
 Requires:	%{name} = %{version}-%{release}
 
