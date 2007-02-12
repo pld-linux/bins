@@ -3,7 +3,7 @@
 #
 %include	/usr/lib/rpm/macros.perl
 Summary:	HTML photo album generator
-Summary(pl):	Generator album體 fotograficznych w HTML-u
+Summary(pl.UTF-8):   Generator album贸w fotograficznych w HTML-u
 Name:		bins
 Version:	1.1.27
 Release:	1
@@ -25,21 +25,21 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 The aim of BINS is to generate static HTML photo albums.
 
-%description -l pl
-BINS s硊縴 do generowania album體 fotograficznych w postaci
+%description -l pl.UTF-8
+BINS s艂u偶y do generowania album贸w fotograficznych w postaci
 statycznych stron HTML.
 
 %package edit-gui
 Summary:	Editor GUI for BINS
-Summary(pl):	Interfejs u縴tkownika do edycji album體 BINS
+Summary(pl.UTF-8):   Interfejs u偶ytkownika do edycji album贸w BINS
 Group:		Applications/Graphics
 Requires:	%{name} = %{version}-%{release}
 
 %description edit-gui
 GUI for editing BINS albums.
 
-%description edit-gui -l pl
-Graficzny interfejs u縴tkownika do edycji album體 BINS.
+%description edit-gui -l pl.UTF-8
+Graficzny interfejs u偶ytkownika do edycji album贸w BINS.
 
 %prep
 %setup -q
