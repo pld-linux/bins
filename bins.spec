@@ -5,12 +5,12 @@
 Summary:	HTML photo album generator
 Summary(pl.UTF-8):	Generator albumów fotograficznych w HTML-u
 Name:		bins
-Version:	1.1.27
+Version:	1.1.29
 Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://zubro.chez.tiscali.fr/BINS/%{name}-%{version}.tar.bz2
-# Source0-md5:	a4cd238c681ea54f21fcffc0dfee55cb
+# Source0-md5:	3398d0ea3a97e49f5aaabb3b79da334a
 Patch0:		%{name}-localedir.patch
 Patch1:		%{name}-gladedir.patch
 Patch2:		%{name}-datadir.patch
@@ -51,10 +51,6 @@ Graficzny interfejs użytkownika do edycji albumów BINS.
 # outdated
 rm -f intl/zh_TW.Big5.po
 rm -f intl/*.mo
-# current
-mv -f intl/zh{,_TW}.po
-mv -f intl/messages.po{,t}
-mv -f intl/bins-edit-gui.po{,t}
 
 %build
 cd intl
@@ -69,8 +65,10 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/%{name} \
 	$RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1} \
 	$RPM_BUILD_ROOT%{_datadir}/%{name}
 
-install anti_bins bins bins_edit $RPM_BUILD_ROOT%{_bindir}
-install bins_cleanupgallery $RPM_BUILD_ROOT%{_bindir}
+install bins bins_edit $RPM_BUILD_ROOT%{_bindir}
+install tools/{anti_bins,bins_cleanupgallery,bins_addtext,bins_txt2xml} $RPM_BUILD_ROOT%{_bindir}
+install tools/add_num_prefix $RPM_BUILD_ROOT%{_bindir}/bins_add_num_prefix
+install tools/remove_num_prefix $RPM_BUILD_ROOT%{_bindir}/bins_remove_num_prefix
 install bins-edit-gui $RPM_BUILD_ROOT%{_bindir}
 install binsrc $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
 cp -r templates* $RPM_BUILD_ROOT%{_datadir}/%{name}
@@ -101,8 +99,12 @@ rm -rf $RPM_BUILD_ROOT
 %doc CREDITS ChangeLog README TODO doc/*.html
 %attr(755,root,root) %{_bindir}/bins
 %attr(755,root,root) %{_bindir}/bins_edit
-%attr(755,root,root) %{_bindir}/bins_cleanupgallery
+%attr(755,root,root) %{_bindir}/bins_add_num_prefix
 %attr(755,root,root) %{_bindir}/anti_bins
+%attr(755,root,root) %{_bindir}/bins_cleanupgallery
+%attr(755,root,root) %{_bindir}/bins_addtext
+%attr(755,root,root) %{_bindir}/bins_txt2xml
+%attr(755,root,root) %{_bindir}/bins_remove_num_prefix
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/binsrc
 %dir %{_datadir}/%{name}
