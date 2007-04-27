@@ -1,12 +1,12 @@
-diff -urN bins-1.1.26.orig/bins bins-1.1.26/bins
---- bins-1.1.26.orig/bins	2004-06-30 20:55:02.275705000 +0200
-+++ bins-1.1.26/bins	2004-06-30 20:55:57.137365528 +0200
-@@ -341,7 +341,7 @@
+diff -urN bins-1.1.29.orig/bins bins-1.1.29/bins
+--- bins-1.1.29.orig/bins	2006-03-11 11:02:09.000000000 +0100
++++ bins-1.1.29/bins	2006-03-11 16:51:22.729865032 +0100
+@@ -383,7 +383,7 @@
  
-    # The following parameters cannot be set in config files for now :
-    globalConfigDir => "/etc/bins",       # System wide configuration directory
--   globalDataDir   => "/usr/local/share/bins", # System wide data directory
-+   globalDataDir   => "/usr/share/bins", # System wide data directory
-    userConfigDir   => "~/.bins",         # User configuration directory
-    configFileName  => "binsrc",          # Configuration file.
+      # The following parameters cannot be set in config files for now :
+      globalConfigDir => "/etc/bins",       # System wide configuration directory
+-     globalDataDir   => "/usr/local/share/bins", # System wide data directory
++     globalDataDir   => "/usr/share/bins", # System wide data directory
+      userConfigDir   => "~/.bins",         # User configuration directory
+      configFileName  => "binsrc",          # Configuration file.
  
