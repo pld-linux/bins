@@ -1,7 +1,6 @@
 # TODO:
 # - add desktop and png icon for bins-edit-gui.
 #
-%include	/usr/lib/rpm/macros.perl
 Summary:	HTML photo album generator
 Summary(pl.UTF-8):	Generator albumów fotograficznych w HTML-u
 Name:		bins
